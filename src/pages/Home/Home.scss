@@ -1,0 +1,23 @@
+
+.app_container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+}
+
+.cards_container {
+  width: 50%;
+  margin-top: 50px;
+}
+
+.form_container {
+  width: 40%;
+  border: 1px solid #eee;
+  min-height: 300px;
+  margin-top: 50px;
+  position: fixed;
+  top: 50px;
+  right: 20px;
+  padding-top: 20px;
+}
