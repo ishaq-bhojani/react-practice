@@ -13,3 +13,103 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.ant-layout{
+  min-height: 100vh !important;
+}
+.login-layout .site-layout-content {
+  min-height: 280px;
+  padding: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#components-layout-demo-top .logo {
+  float: left;
+  width: 120px;
+  height: 31px;
+  margin: 16px 24px 16px 0;
+  background: rgba(255, 255, 255, 0.3);
+}
+.ant-row-rtl #components-layout-demo-top .logo {
+  float: right;
+  margin: 16px 0 16px 24px;
+}
+.header-background{
+  background-color: #fff !important;
+}
+.login-logo-container{
+  margin: 40px;
+  text-align: center;
+}
+ .trigger {
+  padding: 0 24px;
+  font-size: 18px;
+  line-height: 64px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+ .trigger:hover {
+  color: #1890ff;
+}
+
+.site-layout .site-layout-background-dashboard {
+  background: #fff !important;
+}
+.dashboard-logo{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+}
+.right-nav-items{
+  display: inline;
+  float: right;
+}
+.nav-profile-img{
+  border: 1px solid rgb(204, 204, 204);
+  border-radius: 4px;
+}
+.menu-nav-items{
+  min-width: 150px !important;
+}
+.menu-nav-item{
+  padding-left: 20px;
+}
+.center-div{
+  text-align: center;
+  font-weight: bold;
+  font-size: 30px;
+}
+.center-container{
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ant-table{
+  width: 100%;
+  overflow: scroll;
+}
+.ant-table::-webkit-scrollbar {
+  display: none;
+}
+.authContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.authCard{
+  width: 700px;
+  padding: 50px 50px;
+  text-align: center;
+  border-radius: 10px;
+  .auth-logo{
+    height: 55px;
+    margin-bottom: 50px;
+  }
+  .auth-btn{
+    width: 150px;
+    margin-bottom: 10px;
+  }
+}
