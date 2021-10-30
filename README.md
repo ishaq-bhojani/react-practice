@@ -3,7 +3,7 @@
 
 ## How to use
 ##### Configure Your Firebase Project
-1) Create a `.env` file in root directory of the project with following `ENVIRONMENT VARIABLE`
+1) Create a `.env` file in root directory of the project with following `ENVIRONMENT VARIABLE` (if not created)
 ```env
 REACT_APP_FIREBASE_API_KEY=*******
 REACT_APP_FIREBASE_AUTH_DOMAIN=*******
