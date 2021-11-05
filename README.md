@@ -1,4 +1,4 @@
-# [Check Demo](https://react-practice-saylani.netlify.app/)
+## [Check Demo](https://react-practice-demo.netlify.app/)
 # Our Practice Project for React
 
 ## How to use
