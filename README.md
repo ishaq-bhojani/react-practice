@@ -3,7 +3,7 @@
 
 ## How to use
 ##### Configure Your Firebase Project
-1) Create a `.env` file in root directory of the project with following `ENVIRONMENT VARIABLE` (if not created)
+1) Update a `.env` file in root directory of the project with following `ENVIRONMENT VARIABLE` (if not created)
 ```env
 REACT_APP_FIREBASE_API_KEY=*******
 REACT_APP_FIREBASE_AUTH_DOMAIN=*******
@@ -22,5 +22,7 @@ cd react-practice
 npm install
 npm start
 ```
+### Added Database Integration, now posts will not be deleted.
+
 ## We will continue with this project for learning
 ### Current Progress: 50%
