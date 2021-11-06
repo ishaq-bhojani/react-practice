@@ -1,28 +1,37 @@
+import React, { useEffect, useState } from 'react'
 import {
     BrowserRouter as Router,
-    Switch,
-    Route
 } from "react-router-dom";
-import Home from "../pages/Home/Home";
-import About from "../pages/About/About";
-import Nav from "../components/Nav/Nav";
+import AuthHandler from "../pages/AuthHandler/AuthHandler";
+import AuthContext from "../Context/AuthContect";
 
-const Switcher = () => {
-    return (<Switch>
-        <Route path="/about">
-            <About/>
-        </Route>
-        <Route path="/">
-            <Home/>
-        </Route>
-    </Switch>)
-}
+
 
 const Routes = () => {
+
+
+    const [toggle, setToogle] = useState(false);
+
+    useEffect(() => {
+        const isStorageLoogedIn = localStorage.getItem("loggedIn") === "1";
+        setToogle(isStorageLoogedIn)
+    }, [])
+
+
+    const onLogout = () => {
+        localStorage.setItem("loggedIn", "0")
+        setToogle(false)
+    }
+
     return (
         <Router>
-            <Nav/>
-            <Switcher/>
+            <AuthContext.Provider value={{
+                isLoggedIn: toggle,
+                onLogout: onLogout,
+                setToogle: setToogle,
+            }}>
+                <AuthHandler />
+            </AuthContext.Provider>
         </Router>
     );
 }
