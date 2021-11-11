@@ -8,6 +8,13 @@ import { UploadOutlined } from '@ant-design/icons';
 
 const EditModal = ({ visible, modalInCardData }) => {
     const [form] = AntForm.useForm();
+    const formItemLayout = {
+        labelCol: { span: 6 },
+        wrapperCol: { span: 14 }
+    };
+    const buttonItemLayout = {
+        wrapperCol: { span: 16, offset: 6 },
+    };
 
     const onFinish = (values) => {
         // console.log('Success:', values);
@@ -18,17 +25,19 @@ const EditModal = ({ visible, modalInCardData }) => {
             const base64 = e.target.result;
             form.resetFields();
             modalInCardData.edit_handler({ values: values, thumb: file.thumbUrl, upload: base64 });
+            form.resetFields();
         };
         reader.readAsDataURL(file.originFileObj);
+        visible(false);
     };
 
     const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
+        form.resetFields();
     };
 
     const normFile = (e) => {
         console.log('Upload event:', e);
-
         if (Array.isArray(e)) {
             return e;
         }
@@ -48,6 +57,7 @@ const EditModal = ({ visible, modalInCardData }) => {
             >
 
                 <AntForm
+                    {...formItemLayout}
                     initialValues={{ remember: true, value: "ameen" }}
                     onFinish={onFinish}
                     onFinishFailed={onFinishFailed}
@@ -81,7 +91,7 @@ const EditModal = ({ visible, modalInCardData }) => {
                         </Upload>
                     </AntForm.Item>
 
-                    <AntForm.Item wrapperCol={{ offset: 4, span: 26 }}>
+                    <AntForm.Item {...buttonItemLayout}>
                         <Button type="primary" htmlType="submit">
                             Submit
                         </Button>

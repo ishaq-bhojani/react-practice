@@ -9,18 +9,19 @@ const { Meta } = AntCard;
 
 const Card = ({ cardInCardsData }) => {
     const [check, setCheck] = useState(false);
+    const [refresh, setRefresh] = useState(false);
     const setModal2Visible = (modal2Visible) => {
         setCheck(modal2Visible);
     }
     const edit_click = () => {
         setCheck(true)
-        // console.log(cardInCardsData);
     }
     const edit_handler = (values) => {
         cardInCardsData.post.title = values.values.title;
         cardInCardsData.post.description = values.values.description;
         cardInCardsData.post.upload = values.upload;
         cardInCardsData.post.thumb = values.thumb;
+        setRefresh(!refresh)
     }
 
     return (
@@ -50,4 +51,4 @@ const Card = ({ cardInCardsData }) => {
         </>
     );
 }
-export default React.memo(Card);
+export default Card;
