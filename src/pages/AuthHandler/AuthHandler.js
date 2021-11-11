@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
 import {
-    BrowserRouter as Router,
     Switch,
     Route
 } from "react-router-dom";
@@ -12,14 +11,13 @@ import Login from '../Login/Login'
 import AuthContext from '../../Context/AuthContect';
 
 const NotLog = () => {
-    const authuseCtx = useContext(AuthContext)
     return (
         <Switch>
             <Route path="/signup">
                 <Signup />
             </Route>
             <Route path="/">
-                <Login onLogin={authuseCtx.onLogin} />
+                <Login />
             </Route>
         </Switch>
     )
@@ -40,7 +38,7 @@ const Logged = () => {
 
 const AuthHandler = () => {
 
-    const authuseCtx = useContext(AuthContext)
+    const authuseCtx = useContext(AuthContext);
     return authuseCtx.isLoggedIn ? <div><Nav /> <Logged /></div> : <NotLog />
 }
 

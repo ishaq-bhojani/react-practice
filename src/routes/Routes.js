@@ -5,11 +5,7 @@ import {
 import AuthHandler from "../pages/AuthHandler/AuthHandler";
 import AuthContext from "../Context/AuthContect";
 
-
-
 const Routes = () => {
-
-
     const [toggle, setToogle] = useState(false);
 
     useEffect(() => {

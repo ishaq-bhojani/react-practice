@@ -1,16 +1,6 @@
-import React, { useState } from 'react';
-import {
-    Form,
-    Input,
-    InputNumber,
-    Cascader,
-    Select,
-    Row,
-    Col,
-    Checkbox,
-    Button,
-    AutoComplete,
-} from 'antd';
+import React from 'react';
+import { Form, Input, Button, } from 'antd';
+// InputNumber, Cascader, Select, Row, Col, Checkbox,
 import { Link } from 'react-router-dom';
 import './Signup.scss'
 import icon from '../../Images/Social.png'
@@ -56,7 +46,7 @@ const Signup = () => {
                                             {/* <input type="text" id="loginnameoremail" className="form-control rounded-0 form-control-lg" required /> */}
                                             <div className="d-flex justify-content-between">
                                                 <label className="form-label" htmlFor="loginnameoremail">Email address</label>
-                                                <a className="link-style" href="#" style={{ display: 'none' }} id="sendverfemailagain">Send Verification email</a>
+                                                {/* <a className="link-style" href="#" style={{ display: 'none' }} id="sendverfemailagain">Send Verification email</a> */}
                                             </div>
                                         </div>
                                     </div>

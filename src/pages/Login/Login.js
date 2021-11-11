@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Form, Input, Button, AutoComplete, } from 'antd';
+import { Form, Input, Button, } from 'antd';
 // InputNumber, Cascader, Select, Row, Col, Checkbox,
 import './Login.scss'
 import icon from '../../Images/Social.png'
@@ -54,7 +54,7 @@ const Login = () => {
                                             {/* <input type="text" id="loginnameoremail" className="form-control rounded-0 form-control-lg" required /> */}
                                             <div className="d-flex justify-content-between">
                                                 <label className="form-label" htmlFor="loginnameoremail"> Email address</label>
-                                                <a className="link-style" href="#" style={{ display: 'none' }} id="sendverfemailagain">Send Verification email</a>
+                                                {/* <a className="link-style" href="#" style={{ display: 'none' }} id="sendverfemailagain">Send Verification email</a> */}
                                             </div>
                                         </div>
                                     </div>
@@ -72,7 +72,7 @@ const Login = () => {
                                         {/* <input type="password" id="loginpassword" className="form-control rounded-0 form-control-lg" required /> */}
                                         <div className="d-flex justify-content-between">
                                             <label className="form-label" htmlFor="loginpassword">Password</label>
-                                            <a className="link-style" href="./forgetpassword.html">Forget Password</a>
+                                            {/* <a className="link-style" href="./forgetpassword.html">Forget Password</a> */}
                                         </div>
                                     </div>
                                     <div className="form-check form-switch">
@@ -81,7 +81,7 @@ const Login = () => {
                                             Password</label>
                                     </div>
                                     <div id="emailHelp" className="form-text mb-4 text-center pt-4">
-                                        Dont have an account <a className="link-style" href="usersignup.html"><Link to="/signup">Signup</Link></a>
+                                        Dont have an account <Link to="/signup">Signup</Link>
                                     </div>
                                     <div className="pt-3">
                                         <Form.Item>
