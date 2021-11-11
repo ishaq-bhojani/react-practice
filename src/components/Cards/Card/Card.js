@@ -14,7 +14,7 @@ const Card = ({ cardInCardsData }) => {
     }
     const edit_click = () => {
         setCheck(true)
-        console.log(cardInCardsData);
+        // console.log(cardInCardsData);
     }
     const edit_handler = (values) => {
         cardInCardsData.post.title = values.values.title;

@@ -25,7 +25,7 @@ const EditModal = ({ visible, modalInCardData }) => {
     const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
     };
-    
+
     const normFile = (e) => {
         console.log('Upload event:', e);
 
@@ -43,7 +43,7 @@ const EditModal = ({ visible, modalInCardData }) => {
                 centered
                 form={form}
                 visible={modalInCardData.check}
-                onEdit={() => visible(false)}
+                // onOk={() => {visible(false)}}
                 onCancel={() => visible(false)}
             >
 
