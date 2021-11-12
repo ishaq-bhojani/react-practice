@@ -1,24 +1,26 @@
 import React from 'react';
-import { Form as AntForm, Input, Modal, Button, Upload } from 'antd';
+import { Form as AntForm, Input, Modal, Button, Upload, Menu, Dropdown } from 'antd';
 import Form from '../Form/Form'
 import { UploadOutlined } from '@ant-design/icons';
 
-
-
-
 const EditModal = ({ visible, modalInCardData }) => {
     const [form] = AntForm.useForm();
+    const inputRef = React.useRef(null);
+
+    const sharedProps = {
+        style: { width: '100%' },
+        defaultValue: 'Ant Design love you!',
+        ref: inputRef,
+    };
+
     const formItemLayout = {
         labelCol: { span: 6 },
         wrapperCol: { span: 14 }
     };
-    const buttonItemLayout = {
-        wrapperCol: { span: 16, offset: 6 },
-    };
+    const buttonItemLayout = {wrapperCol: { span: 16, offset: 6 }, };
 
     const onFinish = (values) => {
         // console.log('Success:', values);
-        // modalInCardData.dispatch({ type: ACTION.EDIT_POST, payload: { values: values } })
         const file = values.upload[0];
         let reader = new FileReader();
         reader.onload = (e) => {
@@ -32,21 +34,17 @@ const EditModal = ({ visible, modalInCardData }) => {
     };
 
     const onFinishFailed = (errorInfo) => {
-        console.log('Failed:', errorInfo);
-        form.resetFields();
+        console.log('Failed:', errorInfo); form.resetFields();
     };
 
     const normFile = (e) => {
         console.log('Upload event:', e);
-        if (Array.isArray(e)) {
-            return e;
-        }
+        if (Array.isArray(e)) {return e;}
         return e && e.fileList;
     };
 
     return (
         <>
-
             <Modal
                 title="Vertically centered modal dialog"
                 centered
@@ -55,7 +53,6 @@ const EditModal = ({ visible, modalInCardData }) => {
                 // onOk={() => {visible(false)}}
                 onCancel={() => visible(false)}
             >
-
                 <AntForm
                     {...formItemLayout}
                     initialValues={{ remember: true, value: "ameen" }}
@@ -68,7 +65,7 @@ const EditModal = ({ visible, modalInCardData }) => {
                         name="title"
                         rules={[{ required: true, message: 'Please input your Title!' }]}
                     >
-                        <Input />
+                        <Input {...sharedProps} />
                     </AntForm.Item>
 
                     <AntForm.Item
@@ -78,6 +75,7 @@ const EditModal = ({ visible, modalInCardData }) => {
                     >
                         <Input.Password />
                     </AntForm.Item>
+                    
                     <AntForm.Item
                         name="upload"
                         label="Upload"

@@ -1,11 +1,30 @@
 
 import React, { useState } from 'react';
-import { Card as AntCard, Avatar } from 'antd';
+import { Card as AntCard, Avatar, Menu, Button, Dropdown } from 'antd';
 import { EditOutlined, EllipsisOutlined, SettingOutlined } from "@ant-design/icons";
 import EditModal from '../../Edit_Modal/EditModal';
 import EditContext from '../../../Context/EditContext';
 const { Meta } = AntCard;
 
+const menu = (
+    <Menu>
+        <Menu.Item>
+            <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
+                1st menu item
+            </a>
+        </Menu.Item>
+        <Menu.Item>
+            <a target="_blank" rel="noopener noreferrer" href="https://www.aliyun.com">
+                2nd menu item
+            </a>
+        </Menu.Item>
+        <Menu.Item>
+            <a target="_blank" rel="noopener noreferrer" href="https://www.luohanacademy.com">
+                3rd menu item
+            </a>
+        </Menu.Item>
+    </Menu>
+);
 
 const Card = ({ cardInCardsData }) => {
     const [check, setCheck] = useState(false);
@@ -37,7 +56,10 @@ const Card = ({ cardInCardsData }) => {
                 actions={[
                     <SettingOutlined key="setting" />,
                     <EditOutlined key="edit" onClick={edit_click} />,
-                    <EllipsisOutlined key="ellipsis" />,
+                    <Dropdown overlay={menu} placement="bottomRight" arrow>
+                        {/* <Button>bottomRight</Button> */}
+                    <EllipsisOutlined key="ellipsis" />
+                    </Dropdown>
                 ]}
             >
                 <Meta

@@ -11,8 +11,7 @@ const Routes = () => {
     useEffect(() => {
         const isStorageLoogedIn = localStorage.getItem("loggedIn") === "1";
         setToogle(isStorageLoogedIn)
-    }, [])
-
+    }, []);
 
     const onLogout = () => {
         localStorage.setItem("loggedIn", "0")
