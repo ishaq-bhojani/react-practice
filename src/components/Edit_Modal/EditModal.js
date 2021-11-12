@@ -6,10 +6,15 @@ import { UploadOutlined } from '@ant-design/icons';
 const EditModal = ({ visible, modalInCardData }) => {
     const [form] = AntForm.useForm();
     const inputRef = React.useRef(null);
+    const editData = modalInCardData.cardInCardsData.post;
 
-    const sharedProps = {
-        style: { width: '100%' },
-        defaultValue: 'Ant Design love you!',
+    const titleProps = {
+        defaultValue: editData.title,
+        ref: inputRef,
+    };
+
+    const descriptionProps = {
+        defaultValue: editData.description,
         ref: inputRef,
     };
 
@@ -17,17 +22,15 @@ const EditModal = ({ visible, modalInCardData }) => {
         labelCol: { span: 6 },
         wrapperCol: { span: 14 }
     };
-    const buttonItemLayout = {wrapperCol: { span: 16, offset: 6 }, };
+    const buttonItemLayout = { wrapperCol: { span: 16, offset: 6 }, };
 
     const onFinish = (values) => {
-        // console.log('Success:', values);
         const file = values.upload[0];
         let reader = new FileReader();
         reader.onload = (e) => {
             const base64 = e.target.result;
             form.resetFields();
             modalInCardData.edit_handler({ values: values, thumb: file.thumbUrl, upload: base64 });
-            form.resetFields();
         };
         reader.readAsDataURL(file.originFileObj);
         visible(false);
@@ -39,7 +42,7 @@ const EditModal = ({ visible, modalInCardData }) => {
 
     const normFile = (e) => {
         console.log('Upload event:', e);
-        if (Array.isArray(e)) {return e;}
+        if (Array.isArray(e)) { return e; }
         return e && e.fileList;
     };
 
@@ -63,19 +66,17 @@ const EditModal = ({ visible, modalInCardData }) => {
                     <AntForm.Item
                         label="Title"
                         name="title"
-                        rules={[{ required: true, message: 'Please input your Title!' }]}
                     >
-                        <Input {...sharedProps} />
+                        <Input {...titleProps} />
                     </AntForm.Item>
 
                     <AntForm.Item
                         label="Description"
                         name="description"
-                        rules={[{ required: true, message: 'Please input your Description!' }]}
                     >
-                        <Input.Password />
+                        <Input {...descriptionProps} />
                     </AntForm.Item>
-                    
+
                     <AntForm.Item
                         name="upload"
                         label="Upload"
@@ -87,6 +88,8 @@ const EditModal = ({ visible, modalInCardData }) => {
                             maxCount={1}>
                             <Button icon={<UploadOutlined />}>Click to upload</Button>
                         </Upload>
+
+                        {/* <img alt="newexample" src={editData.upload} width={100} /> */}
                     </AntForm.Item>
 
                     <AntForm.Item {...buttonItemLayout}>

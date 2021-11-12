@@ -6,35 +6,18 @@ import EditModal from '../../Edit_Modal/EditModal';
 import EditContext from '../../../Context/EditContext';
 const { Meta } = AntCard;
 
-const menu = (
-    <Menu>
-        <Menu.Item>
-            <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
-                1st menu item
-            </a>
-        </Menu.Item>
-        <Menu.Item>
-            <a target="_blank" rel="noopener noreferrer" href="https://www.aliyun.com">
-                2nd menu item
-            </a>
-        </Menu.Item>
-        <Menu.Item>
-            <a target="_blank" rel="noopener noreferrer" href="https://www.luohanacademy.com">
-                3rd menu item
-            </a>
-        </Menu.Item>
-    </Menu>
-);
-
 const Card = ({ cardInCardsData }) => {
     const [check, setCheck] = useState(false);
     const [refresh, setRefresh] = useState(false);
+
+
     const setModal2Visible = (modal2Visible) => {
         setCheck(modal2Visible);
     }
     const edit_click = () => {
         setCheck(true)
     }
+    // console.log(cardInCardsData.cardInHomedata.posts);
     const edit_handler = (values) => {
         cardInCardsData.post.title = values.values.title;
         cardInCardsData.post.description = values.values.description;
@@ -42,6 +25,20 @@ const Card = ({ cardInCardsData }) => {
         cardInCardsData.post.thumb = values.thumb;
         setRefresh(!refresh)
     }
+    const handle_delete = () => {
+        console.log("handle delete Run");
+        console.log(cardInCardsData.cardInHomedata.posts);
+    }
+
+    const menu = (
+        <Menu>
+            <Menu.Item>
+                <a rel="noopener noreferrer" onClick={handle_delete}>
+                    Delete Item
+                </a>
+            </Menu.Item>
+        </Menu>
+    );
 
     return (
         <>
@@ -57,8 +54,7 @@ const Card = ({ cardInCardsData }) => {
                     <SettingOutlined key="setting" />,
                     <EditOutlined key="edit" onClick={edit_click} />,
                     <Dropdown overlay={menu} placement="bottomRight" arrow>
-                        {/* <Button>bottomRight</Button> */}
-                    <EllipsisOutlined key="ellipsis" />
+                        <EllipsisOutlined key="ellipsis" />
                     </Dropdown>
                 ]}
             >
@@ -68,7 +64,7 @@ const Card = ({ cardInCardsData }) => {
                     description={cardInCardsData.post.description}
                 />
             </AntCard>
-            <EditModal visible={setModal2Visible} modalInCardData={{ check: check, dispatch: cardInCardsData.dispatch, edit_handler: edit_handler }} />
+            <EditModal visible={setModal2Visible} modalInCardData={{ check: check, dispatch: cardInCardsData.dispatch, edit_handler: edit_handler, cardInCardsData: cardInCardsData, }} />
 
         </>
     );
