@@ -49,14 +49,16 @@ const Home = () => {
         dispatch({ type: ACTION.ADD_POST, payload: { data: data } })
         console.log(data);
     }
+    
+    const [refresh , setRef] = useState(false)
 
     const [posts, dispatch] = useReducer(reducer, [])
-
+    console.log("jaffar" , posts)
     return (
         <div>
             <div className="app_container">
                 <div className="cards_container">
-                    <Cards cardInHomedata={{posts:posts, dispatch:dispatch} } />
+                    <Cards refresh={refresh} setRef={setRef} cardInHomedata={{posts:posts, dispatch:dispatch} } />
                 </div>
                 <div className="form_container">
                     <Form onAdded={onAddedHandler} />

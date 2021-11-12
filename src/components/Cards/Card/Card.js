@@ -6,11 +6,11 @@ import EditModal from '../../Edit_Modal/EditModal';
 import EditContext from '../../../Context/EditContext';
 const { Meta } = AntCard;
 
-const Card = ({ cardInCardsData }) => {
+const Card = ({ cardInCardsData , deleteHandle }) => {
     const [check, setCheck] = useState(false);
     const [refresh, setRefresh] = useState(false);
 
-
+    console.log("JAFFAR CARD" , );
     const setModal2Visible = (modal2Visible) => {
         setCheck(modal2Visible);
     }
@@ -33,7 +33,7 @@ const Card = ({ cardInCardsData }) => {
     const menu = (
         <Menu>
             <Menu.Item>
-                <a rel="noopener noreferrer" onClick={handle_delete}>
+                <a rel="noopener noreferrer" onClick={()=>{deleteHandle(cardInCardsData.index) ; setRefresh(!refresh)}}>
                     Delete Item
                 </a>
             </Menu.Item>
