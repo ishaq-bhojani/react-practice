@@ -29,15 +29,16 @@ import React from 'react'
 
 const ACTION = {
     ADD_POST: 'add_post',
-    EDIT_POST: 'edit_post'
+    EDIT_POST: 'edit_post',
+    DELETE_POST: 'delete_post'
 }
 
 function reducer(posts, action) {
     switch (action.type) {
         case ACTION.ADD_POST:
             return [...posts, action.payload.data]
-        case ACTION.EDIT_POST:
-            return [action.payload.values]
+        case ACTION.DELETE_POST:
+            return posts.filter(post => post.id !== action.payload.id)
         default:
             return posts
     }
@@ -47,18 +48,16 @@ function reducer(posts, action) {
 const Home = () => {
     const onAddedHandler = (data) => {
         dispatch({ type: ACTION.ADD_POST, payload: { data: data } })
-        console.log(data);
     }
-    
-    const [refresh , setRef] = useState(false)
+
 
     const [posts, dispatch] = useReducer(reducer, [])
-    console.log("jaffar" , posts)
+    console.log("jaffar", posts)
     return (
         <div>
             <div className="app_container">
                 <div className="cards_container">
-                    <Cards refresh={refresh} setRef={setRef} cardInHomedata={{posts:posts, dispatch:dispatch} } />
+                    <Cards cardsInHomedata={{ posts: posts, dispatch: dispatch }} />
                 </div>
                 <div className="form_container">
                     <Form onAdded={onAddedHandler} />
@@ -69,4 +68,4 @@ const Home = () => {
 }
 
 export default Home
-export {ACTION}
+export { ACTION }

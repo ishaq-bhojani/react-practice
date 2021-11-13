@@ -13,11 +13,12 @@ const Form = ({ onAdded }) => {
     };
 
     const onFinish = (values) => {
+        const date = new Date()
         const file = values.upload[0];
         let reader = new FileReader();
         reader.onload = (e) => {
             const base64 = e.target.result;
-            onAdded({ ...values, thumb: file.thumbUrl, upload: base64 });
+            onAdded({ ...values, thumb: file.thumbUrl, upload: base64, id: date.getTime()  });
             form.resetFields();
         };
         reader.readAsDataURL(file.originFileObj);

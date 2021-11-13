@@ -8,20 +8,10 @@ const EditModal = ({ visible, modalInCardData }) => {
     const inputRef = React.useRef(null);
     const editData = modalInCardData.cardInCardsData.post;
 
-    const titleProps = {
-        defaultValue: editData.title,
-        ref: inputRef,
-    };
+    const titleProps = { defaultValue: editData.title, ref: inputRef, };
+    const descriptionProps = { defaultValue: editData.description, ref: inputRef, };
 
-    const descriptionProps = {
-        defaultValue: editData.description,
-        ref: inputRef,
-    };
-
-    const formItemLayout = {
-        labelCol: { span: 6 },
-        wrapperCol: { span: 14 }
-    };
+    const formItemLayout = { labelCol: { span: 6 }, wrapperCol: { span: 14 } };
     const buttonItemLayout = { wrapperCol: { span: 16, offset: 6 }, };
 
     const onFinish = (values) => {
@@ -36,9 +26,7 @@ const EditModal = ({ visible, modalInCardData }) => {
         visible(false);
     };
 
-    const onFinishFailed = (errorInfo) => {
-        console.log('Failed:', errorInfo); form.resetFields();
-    };
+    const onFinishFailed = (errorInfo) => { console.log('Failed:', errorInfo); form.resetFields(); };
 
     const normFile = (e) => {
         console.log('Upload event:', e);
@@ -88,7 +76,6 @@ const EditModal = ({ visible, modalInCardData }) => {
                             maxCount={1}>
                             <Button icon={<UploadOutlined />}>Click to upload</Button>
                         </Upload>
-
                         {/* <img alt="newexample" src={editData.upload} width={100} /> */}
                     </AntForm.Item>
 

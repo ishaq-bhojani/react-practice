@@ -4,36 +4,36 @@ import { Card as AntCard, Avatar, Menu, Button, Dropdown } from 'antd';
 import { EditOutlined, EllipsisOutlined, SettingOutlined } from "@ant-design/icons";
 import EditModal from '../../Edit_Modal/EditModal';
 import EditContext from '../../../Context/EditContext';
+import {ACTION} from '../../../pages/Home/Home'
 const { Meta } = AntCard;
 
-const Card = ({ cardInCardsData , deleteHandle }) => {
+const Card = ({ cardInCardsData }) => {
     const [check, setCheck] = useState(false);
-    const [refresh, setRefresh] = useState(false);
 
-    console.log("JAFFAR CARD" , );
     const setModal2Visible = (modal2Visible) => {
         setCheck(modal2Visible);
     }
     const edit_click = () => {
         setCheck(true)
     }
-    // console.log(cardInCardsData.cardInHomedata.posts);
+    // console.log(cardInCardsData.cardsInHomedata.posts);
     const edit_handler = (values) => {
         cardInCardsData.post.title = values.values.title;
         cardInCardsData.post.description = values.values.description;
         cardInCardsData.post.upload = values.upload;
         cardInCardsData.post.thumb = values.thumb;
-        setRefresh(!refresh)
     }
-    const handle_delete = () => {
-        console.log("handle delete Run");
-        console.log(cardInCardsData.cardInHomedata.posts);
+
+    const deleteHandle = () => {
+        // cardsInHomedata.posts.splice(ind, 1);
+        cardInCardsData.dispatch({type: ACTION.DELETE_POST, payload: {id: cardInCardsData.id}})
     }
+
 
     const menu = (
         <Menu>
             <Menu.Item>
-                <a rel="noopener noreferrer" onClick={()=>{deleteHandle(cardInCardsData.index) ; setRefresh(!refresh)}}>
+                <a rel="noopener noreferrer" onClick={deleteHandle}>
                     Delete Item
                 </a>
             </Menu.Item>
