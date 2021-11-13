@@ -1,6 +1,5 @@
 import React from 'react';
-import { Form as AntForm, Input, Modal, Button, Upload, Menu, Dropdown } from 'antd';
-import Form from '../Form/Form'
+import { Form as AntForm, Input, Modal, Button, Upload} from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 
 const EditModal = ({ visible, modalInCardData }) => {

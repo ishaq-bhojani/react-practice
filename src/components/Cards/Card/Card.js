@@ -1,10 +1,9 @@
-
 import React, { useState } from 'react';
-import { Card as AntCard, Avatar, Menu, Button, Dropdown } from 'antd';
+import { Card as AntCard, Avatar, Menu, Dropdown } from 'antd';
 import { EditOutlined, EllipsisOutlined, SettingOutlined } from "@ant-design/icons";
 import EditModal from '../../Edit_Modal/EditModal';
-import EditContext from '../../../Context/EditContext';
 import {ACTION} from '../../../pages/Home/Home'
+
 const { Meta } = AntCard;
 
 const Card = ({ cardInCardsData }) => {
@@ -25,7 +24,6 @@ const Card = ({ cardInCardsData }) => {
     }
 
     const deleteHandle = () => {
-        // cardsInHomedata.posts.splice(ind, 1);
         cardInCardsData.dispatch({type: ACTION.DELETE_POST, payload: {id: cardInCardsData.id}})
     }
 
@@ -33,9 +31,9 @@ const Card = ({ cardInCardsData }) => {
     const menu = (
         <Menu>
             <Menu.Item>
-                <a rel="noopener noreferrer" onClick={deleteHandle}>
+                <div onClick={deleteHandle}>
                     Delete Item
-                </a>
+                </div>
             </Menu.Item>
         </Menu>
     );
